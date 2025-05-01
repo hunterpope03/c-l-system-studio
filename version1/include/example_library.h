@@ -1,9 +1,9 @@
 #ifndef EXAMPLE_LIBRARY_H
 #define EXAMPLE_LIBRARY_H
 
-#include "l_system.h"
+#include "l_system.h" // include the L-System and Rule struct definitions
 
-L_System example_library[10] = {
+L_System example_library[10] = { // array of example L-Systems from Paul Bourke's website
     [0] = {
         .axiom = "X",
         .rules_for_indices = {0},

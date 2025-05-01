@@ -6,13 +6,13 @@
 #include <string.h>
 #include <Python.h>
 
-void flush_buffer() {
+void flush_buffer() { // use after scanf to clear the input buffer
     while (getchar() != '\n') {
         continue;
     }
 }
 
-int start_menu() {
+int start_menu() { // get start menu input
     char input;
     
     printf("a) Tutorial" "\n");
@@ -41,7 +41,7 @@ int start_menu() {
     }
 }
 
-void print_tutorial() {
+void print_tutorial() { // print tutorial text
     printf("\n\n" "*** Tutorial ***" "\n\n");
     
     printf("- A Lindenmayer(L)-System is a mathematical theory used to create plots of complex geometric botanic figures." "\n\n");
@@ -56,7 +56,7 @@ void print_tutorial() {
         printf("Starting Direction - the angle at which to start the drawing, like 0, used for rotation of the plot" "\n");
 }
 
-void print_key() {
+void print_key() { // print program key and input restrictions
     printf("\n\n" "*** Program Key & Input Restrictions ***" "\n\n");
     
     printf("- A variable is any character that is replaced in a transformation rule and are represented by letters in this program:" "\n\n\t");
@@ -75,7 +75,7 @@ void print_key() {
         printf("Turn Angle & Starting Direction : must be a number ≥ 0 and ≤ 360" "\n\n");
 }
 
-int example_menu() {
+int example_menu() { // get example menu input
     int input;
     printf("\n\n" "*** Example Menu ***" "\n\n");
     
@@ -107,7 +107,7 @@ int example_menu() {
     }
 }
 
-void print_custom_menu() {
+void print_custom_menu() { // print the custom menu text
     printf("\n\n" "*** Custom Menu ***" "\n\n\n");
 
     printf("In entering a custom L-System, ensure all inputs are valid and follow the input restrictions below:");

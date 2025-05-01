@@ -6,11 +6,11 @@
 #include <string.h>
 #include <Python.h>
 
-void print_system(L_System sys) {
+void print_system(L_System sys) { // parse an L-System and print data separately 
     printf("\n" "This system has these details:" "\n\n\t");
     printf("Axiom: %s" "\n\t", sys.axiom);
     printf("Rule(s): {" "\n\t\t");
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE; i++) { // parse each rule struct and print the character and rule
         if (sys.rules[i].character == '\0' && sys.rules[i].rule[0] == '\0') {
             break;
         }

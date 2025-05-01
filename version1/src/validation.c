@@ -7,7 +7,7 @@
 #include <string.h>
 #include <Python.h>
 
-void validate_axiom(char* axiom) {
+void validate_axiom(char* axiom) { // validate the inputted axiom
     char input[100];
     int length;
 
@@ -44,7 +44,7 @@ void validate_axiom(char* axiom) {
     }
 }
 
-void rules_for(char *axiom, int *rules_indices) {
+void rules_for(char *axiom, int *rules_indices) { // find the indices of the characters that need rules in the axiom
     int index_range = strlen(axiom);
     int rules_index = 0;
     int seen[256] = {0};
@@ -59,45 +59,84 @@ void rules_for(char *axiom, int *rules_indices) {
     rules_indices[rules_index] = -1;
 }
 
-void validate_rules(Rule* rules, char* axiom, int* indices) {
+int validate_single_rule(char* rule) { // validate a single rule struct
+    if (strchr(rule, ' ') != NULL) {
+        printf("ERROR: Rule cannot contain spaces, try again.\n");
+        return 0;
+    }
+    
+    if (strlen(rule) > 15) {
+        printf("ERROR: Rule cannot be longer than 15 characters, try again.\n");
+        return 0;
+    }
+    
+    for (int i = 0; i < strlen(rule); i++) {
+        if (!isalpha(rule[i]) && rule[i] != '+' && rule[i] != '-' && rule[i] != '[' && rule[i] != ']') {
+            printf("ERROR: Rule can only contain letters and the symbols +, -, [, and ], try again.\n");
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+void validate_rules(Rule* rules, char* axiom, int* indices) { // validate all of the rules for the system 
     int size = 0;
     while (indices[size] != -1) {
         size++;
     }
-
+    
     char input[SIZE + 1];
-
+    int has_rule[256] = {0};    
+    int pending[256] = {0}; 
+    
     for (int i = 0; i < size; i++) {
-        printf("Enter rule for character '%c': ", axiom[indices[i]]);
-        fgets(input, SIZE + 1, stdin);
-        input[strcspn(input, "\n")] = 0;
-
-        if (strchr(input, ' ') != NULL) {
-            printf("ERROR: Rule cannot contain spaces, try again.\n");
-            i--;
-            continue;
-        }
-
-        if (strlen(input) > 15) {
-            printf("ERROR: Rule cannot be longer than 15 characters, try again.\n");
-            i--;
-            continue;
-        }
-
-        for (int j = 0; j < strlen(input); j++) {
-            if (!isalpha(input[j]) && input[j] != '+' && input[j] != '-' && input[j] != '[' && input[j] != ']') {
-                printf("ERROR: Rule can only contain letters and the symbols +, -, [, and ], try again.\n");
-                i--;
+        pending[axiom[indices[i]]] = 1;
+    }
+    
+    int rule_index = 0;
+    int done = 0;
+    
+    while (!done) {
+        done = 1; 
+        
+        for (int c = 0; c < 256; c++) {
+            if (pending[c] && !has_rule[c]) {
+                done = 0;  
+                
+                int valid_rule = 0;
+                while (!valid_rule) {
+                    printf("Enter rule for character '%c': ", (char)c);
+                    
+                    fgets(input, SIZE + 1, stdin);
+                    input[strcspn(input, "\n")] = 0;
+                    
+                    valid_rule = validate_single_rule(input);
+                }
+                
+                rules[rule_index].character = (char)c;
+                strcpy(rules[rule_index].rule, input);
+                rule_index++;
+                
+                has_rule[c] = 1;
+                pending[c] = 0;
+                
+                for (int i = 0; i < strlen(input); i++) {
+                    char new_c = input[i];
+                    if (isalpha(new_c) && !has_rule[new_c]) {
+                        if (!pending[new_c]) {
+                            pending[new_c] = 2;
+                        }
+                    }
+                }
+                
                 break;
             }
         }
-
-        rules[i].character = axiom[indices[i]];
-        strcpy(rules[i].rule, input);
     }
 }
 
-int validate_iterations() {
+int validate_iterations() { // validate the number of iterations
     int input; 
 
     printf("Enter the number of iterations (see above key for requirements): ");
@@ -118,7 +157,7 @@ int validate_iterations() {
     }
 }
 
-float validate_turn_and_start(int data) {
+float validate_turn_and_start(int data) { // validate the turn angle and starting direction
     float input; 
     
     if (data == 1) {

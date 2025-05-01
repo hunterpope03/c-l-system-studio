@@ -6,7 +6,7 @@
 typedef struct {
     char character;
     char rule[SIZE];
-} Rule;
+} Rule; // rule struct for each character in an L-System
 
 struct L_System {
     char axiom[SIZE];
@@ -15,10 +15,10 @@ struct L_System {
     int iterations;
     float turn_angle;
     float start_direction;
-};
+}; // L-System struct
 
 typedef struct L_System L_System;
 
-void print_system(L_System sys);
+void print_system(L_System sys); // function prototype
 
 #endif
