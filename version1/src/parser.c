@@ -1,11 +1,10 @@
 #include "parser.h"
-#include <string.h>
 
-#include <Python.h>
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <Python.h>
 
 char* parser(const char* axiom, Rule rules[], int iterations) {
     double growth_factor = 0;

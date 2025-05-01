@@ -1,10 +1,10 @@
 #include "l_system.h"
 
-#include <Python.h>
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <Python.h>
 
 void print_system(L_System sys) {
     printf("\n" "This system has these details:" "\n\n\t");

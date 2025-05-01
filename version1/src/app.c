@@ -1,10 +1,10 @@
 #include "app.h"
 
-#include <Python.h>
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <Python.h>
 
 void flush_buffer() {
     while (getchar() != '\n') {
@@ -69,8 +69,8 @@ void print_key() {
         printf("] : remove state from stack" "\n\n");
         
     printf("- Each data point entered into this program has specific requirements:" "\n\n\t");
-        printf("Axiom : cannot be empty / cannot be longer than 10 characters / cannot contain spaces / cannot contain any characters other than letters and '+' '-' '[' ']'" "\n\t");
-        printf("Transformation Rules : cannot contain spaces / cannot be longer than 8 characters / cannot contain any characters other than letters and '+' '-' '[' ']'" "\n\t");
+        printf("Axiom : cannot be empty / cannot be longer than 15 characters / cannot contain spaces / cannot contain any characters other than letters and '+' '-' '[' ']'" "\n\t");
+        printf("Transformation Rules : cannot contain spaces / cannot be longer than 15 characters / cannot contain any characters other than letters and '+' '-' '[' ']'" "\n\t");
         printf("Number of Iterations: must be a positive integer ≤ 8" "\n\t");
         printf("Turn Angle & Starting Direction : must be a number ≥ 0 and ≤ 360" "\n\n");
 }
@@ -105,4 +105,12 @@ int example_menu() {
             printf("\nERROR: Invalid input. Try again: ");
         }
     }
+}
+
+void print_custom_menu() {
+    printf("\n\n" "*** Custom Menu ***" "\n\n\n");
+
+    printf("In entering a custom L-System, ensure all inputs are valid and follow the input restrictions below:");
+
+    print_key();
 }

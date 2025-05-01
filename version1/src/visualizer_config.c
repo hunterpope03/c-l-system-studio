@@ -1,16 +1,16 @@
 #include "visualizer_config.h"
 
-#include <Python.h>
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <Python.h>
 
 void initialize_python() {
     Py_Initialize();
     PyObject *sys_module = PyImport_ImportModule("sys");
     PyObject *sys_path = PyObject_GetAttrString(sys_module, "path");
-    PyList_Append(sys_path, PyUnicode_FromString("./src/visual"));
+    PyList_Append(sys_path, PyUnicode_FromString("./py"));
     Py_DECREF(sys_module);
     Py_DECREF(sys_path);
 
@@ -43,7 +43,7 @@ void visualize(const char* parsed, double turn_angle, double start_direction) {
         PyErr_Print();
         return;
     }
-
+    
     PyObject *pClass = PyObject_GetAttrString(pModule, "LSystemVisualizer");
     if (!pClass) {
         PyErr_Print();
