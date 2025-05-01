@@ -54,7 +54,7 @@ class LSystemVisualizer(QMainWindow):
 
         self.scene.setBackgroundBrush(QBrush(self.plot_background)) # create a new brush object for the background of the scene.
         self.pen = QPen(self.plot_color) # create a new pen object for the drawing of the scene.
-        self.pen.setWidthF(0.5) # set pen width.
+        self.pen.setWidthF(0.3) # set pen width.
 
         self.set_frame() # set the frame of the visualization scene based on the boundaries.
         self.set_starting_point() # set the starting point for the visualization.

@@ -1,42 +1,8 @@
-#ifndef APP_H
-#define APP_H
+#ifndef EXAMPLE_LIBRARY_H
+#define EXAMPLE_LIBRARY_H
 
-#define SIZE 31
+#include "l_system.h"
 
-// structs
-typedef struct {
-    char character;
-    char rule[SIZE];
-} Rule;
-
-typedef struct {
-    char axiom[SIZE];
-    int rules_for_indices[SIZE];
-    Rule rules[SIZE];
-    int iterations;
-    float turn_angle;
-    float start_direction;
-} L_System;
-
-// function prototypes
-void initialize_python();
-void finalize_python();
-void flush_buffer();
-int start_menu();
-void print_tutorial();
-void print_key();
-int example_menu();
-void print_system(L_System sys);
-char* parser(const char* axiom, Rule rules[], int iterations);
-void visualize(const char* parsed, double turn_angle, double start_direction);
-// void validate_axiom(char *axiom);
-// void rules_for(char *axiom, int indices[]);
-// void validate_rules(char *rules);
-// int validate_iterations();
-// float validate_turn_angle();
-// float validate_start_direction();
-
-// example system data
 L_System example_library[10] = {
     [0] = {
         .axiom = "X",
@@ -149,4 +115,5 @@ L_System example_library[10] = {
         .start_direction = 0.0f
     }
 };
+
 #endif
