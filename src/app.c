@@ -6,12 +6,37 @@
 #include <string.h>
 #include <Python.h>
 
+/**
+ * Use after scanf to clear the input buffer.
+ *
+ * The input buffer is where the console stores all the characters the user
+ * inputs. When the user inputs more characters than the size of the buffer,
+ * the extra characters are still stored in the buffer. This can cause problems
+ * if the user enters something unexpected, as it can cause the program to act
+ * unexpectedly.
+ *
+ * This function will continue to read characters from the console until it
+ * encounters a newline character, clearing the extra characters from the
+ * buffer.
+ */
 void flush_buffer() { // use after scanf to clear the input buffer
     while (getchar() != '\n') {
         continue;
     }
 }
 
+/**
+ * Prints the start menu and returns an integer based on the user's input.
+ *
+ * 1 : Tutorial
+ * 2 : Example L-Systems
+ * 3 : Custom L-System
+ * 4 : Exit program
+ *
+ * The user is reprompted until a valid selection is made.
+ *
+ * @return 1, 2, 3, or 4
+ */
 int start_menu() { // get start menu input
     char input;
     
@@ -41,6 +66,12 @@ int start_menu() { // get start menu input
     }
 }
 
+/**
+ * Prints the tutorial text.
+ *
+ * This function prints out a detailed explanation of what an L-System is,
+ * how it works, and what it requires to generate a visual representation.
+ */
 void print_tutorial() { // print tutorial text
     printf("\n\n" "*** Tutorial ***" "\n\n");
     
@@ -56,6 +87,13 @@ void print_tutorial() { // print tutorial text
         printf("Starting Direction - the angle at which to start the drawing, like 0, used for rotation of the plot" "\n");
 }
 
+/**
+ * Prints the program key and input restrictions.
+ *
+ * This function prints out a detailed explanation of how the program works,
+ * including the meaning of each character in the L-System, and the input
+ * restrictions for each data point.
+ */
 void print_key() { // print program key and input restrictions
     printf("\n\n" "*** Program Key & Input Restrictions ***" "\n\n");
     
@@ -75,6 +113,16 @@ void print_key() { // print program key and input restrictions
         printf("Turn Angle & Starting Direction : must be a number ≥ 0 and ≤ 360" "\n\n");
 }
 
+
+/**
+ * Prints the example menu and gets a valid selection from the user.
+ *
+ * Prints out a list of example L-Systems, then asks the user to select one
+ * by entering a number. The function will continue to ask for input until a
+ * valid number is entered.
+ *
+ * @return the number of the selected example
+ */
 int example_menu() { // get example menu input
     int input;
     printf("\n\n" "*** Example Menu ***" "\n\n");
@@ -107,6 +155,13 @@ int example_menu() { // get example menu input
     }
 }
 
+/**
+ * Prints the custom menu text.
+ *
+ * This function prints out the custom menu text, which includes the
+ * input restrictions for a custom L-System. It also calls the print_key
+ * function to print the program's key and input restrictions.
+ */
 void print_custom_menu() { // print the custom menu text
     printf("\n\n" "*** Custom Menu ***" "\n\n\n");
 

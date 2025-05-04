@@ -11,6 +11,16 @@
 #include <ctype.h>
 #include <stdlib.h> // include all C libraries
 
+/**
+ * @brief The main entry point of the program.
+ *
+ * The main function initializes the python environment using `initialize_python()`,
+ * prints a welcome message, and then enters a loop to repeatedly show the main
+ * menu and execute the user's selection. The loop continues until the user
+ * chooses the exit option.
+ *
+ * @return 0 if the program executes successfully.
+ */
 int main (void) {
     _Bool exit_program = 0;
     int start_input;

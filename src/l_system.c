@@ -6,7 +6,12 @@
 #include <string.h>
 #include <Python.h>
 
-void print_system(L_System sys) { // parse an L-System and print data separately 
+/**
+ * Prints out all the details of an L-System, including its axiom, rules, number of iterations, turn angle, and starting direction.
+ *
+ * @param sys The L-System to be printed.
+ */
+void print_system(L_System sys) { // parse an L-System's data and print separately 
     printf("\n" "This system has these details:" "\n\n\t");
     printf("Axiom: %s" "\n\t", sys.axiom);
     printf("Rule(s): {" "\n\t\t");

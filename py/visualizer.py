@@ -35,7 +35,7 @@ class LSystemVisualizer(QMainWindow):
             self.view.setScene(None)
 
         self.plot_color = QColor('red')
-        self.plot_background = QColor('black')
+        self.plot_background = QColor('white')
         self.parsed = parsed_system
         self.turn_angle = turn_angle
         self.starting_direction = starting_direction

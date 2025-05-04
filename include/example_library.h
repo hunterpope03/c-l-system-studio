@@ -13,7 +13,7 @@ L_System example_library[10] = { // array of example L-Systems from Paul Bourke'
         },
         .iterations = 10,
         .turn_angle = 45.0f,
-        .start_direction = 0.0f
+        .start_direction = 90.0f
     },
     [1] = {
         .axiom = "-X",
