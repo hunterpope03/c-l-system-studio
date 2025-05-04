@@ -2,4 +2,5 @@
 .dist/
 .vscode/
 /commands.txt
-.__pycache__/
+**/__pycache__/
+app
