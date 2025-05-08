@@ -1,0 +1,1 @@
+x86_64-w64-mingw32-gcc -static -o windows_release main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -I/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13 -L/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib -lpython3.13 
