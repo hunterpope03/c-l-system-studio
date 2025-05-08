@@ -1,6 +1,5 @@
 *.json
 .dist/
 .vscode/
-/commands.txt
+commands.txt
 **/__pycache__/
-app

@@ -20,7 +20,7 @@ jobs:
           gcc -o app main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -I/usr/include/python3.13 -L/usr/lib/python3.13 -lpython3.13
           chmod +x app
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@latest
         with:
           name: app
           path: app
@@ -38,7 +38,7 @@ jobs:
           gcc -o app main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -I/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13 -L/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib -lpython3.13
           chmod +x app
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@latest
         with:
           name: app
           path: app
@@ -56,7 +56,7 @@ jobs:
           gcc -o app.exe main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -IC:\Python39\include -LC:\Python39\libs -lpython3.9
           copy app.exe app.exe
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@latest
         with:
           name: app
           path: app.exe
