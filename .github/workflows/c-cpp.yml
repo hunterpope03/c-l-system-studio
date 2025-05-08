@@ -1,0 +1,62 @@
+name: Build and Compile
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-compile-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc
+      - name: Build and compile
+        run: |
+          gcc -o app main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -I/usr/include/python3.13 -L/usr/lib/python3.13 -lpython3.13
+          chmod +x app
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: app
+
+  build-and-compile-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          brew install gcc
+      - name: Build and compile
+        run: |
+          gcc -o app main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -I/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13 -L/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib -lpython3.13
+          chmod +x app
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: app
+
+  build-and-compile-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          choco install mingw
+      - name: Build and compile
+        run: |
+          gcc -o app.exe main.c src/app.c src/parser.c src/l_system.c src/validation.c src/visualizer_config.c -Iinclude -IC:\Python39\include -LC:\Python39\libs -lpython3.9
+          copy app.exe app.exe
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: app.exe
