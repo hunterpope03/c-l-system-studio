@@ -19,7 +19,7 @@
  * menu and execute the user's selection. The loop continues until the user
  * chooses the exit option.
  *
- * @return 0 if the program executes successfully.
+ * @return 0 if the program executes successfull./appy.
  */
 int main (void) {
     _Bool exit_program = 0;
